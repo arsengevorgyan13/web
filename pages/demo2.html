@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/the-road-ahead.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap" rel="stylesheet">
+    <title>The Road Ahead</title>
+</head>
+
+<body>
+    {{ range .PostHeader }}
+    <header class="header">
+      <div class="header__top">
+        <img src="{{ .Escape }}" alt="Escape.">
+        {{ range .PostHeaderNavButtons }}
+        <ul class="header__nav-buttons">
+          <li><a class="header__nav-buttons_list" href="index.html">{{ .Home }}</a></li>
+          <li><a class="header__nav-buttons_list" href="#">{{ .Categories }}</a></li>
+          <li><a class="header__nav-buttons_list" href="#">{{ .About }}</a></li>
+          <li><a class="header__nav-buttons_list" href="#">{{ .Contact }}</a></li>
+        </ul>
+        {{ end }}
+      </div>
+    </header>
+    {{ end }}
+ 
+    {{ range .PostTopBlock }}
+    <div class="top-block">
+      <h1 class="top-block__headline">{{ .Title }}</h1>
+      <p class="top-block__phrase">{{ .Phrase }}</p>
+    </div>
+    {{ end }}
+    
+    {{ range .MainImage }}
+    <div>
+      <img class="main-image" src="{{ .Image }}">
+    </div>
+    {{ end }}
+
+    {{ range .Pharagraphs }}
+    <div class="Paragraphs">
+      <p class="Paragraphs__text">{{ .FirstPart }}</p>
+      <p class="Paragraphs__text">{{ .SecondPart }}</p> 
+      <p class="Paragraphs__text">{{ .ThirdPart }}</p>
+      <p class="Paragraphs__text">{{ .FourthPart }}</p>    
+    </div>
+    {{ end }}
+ 
+    {{ range .PostFooter }}
+    <footer class="footer">
+        <img class="footer__image" src="{{ .Background }}" alt="footerimage">
+        {{ range .PostFooterContacts }}
+        <div class="footer__contacts">
+          <p class="footer__contact_title">{{ .Title }}</p>
+          <div clas="footer__contact">
+            <input class="footer__contact_email" placeholder="Enter your email address">
+            <button class="footer__contact_button">{{ .Button }}</button>
+          </div>
+        </div>
+        {{ end }}
+        {{ range .PostFooterBottom  }}
+        <div class="footer__bottom">
+          <img class="footer__logo" src="{{ .Escape }}" alt="Escape.">
+          {{ range .PostFooterButtons }}
+          <ul class="footer__buttons">
+            <li><a class="footer__buttons_list" href="#">HOME</a></li>
+            <li><a class="footer__buttons_list" href="#">CATEGORIES</a></li>
+            <li><a class="footer__buttons_list" href="#">ABOUT</a>
+            <li><a class="footer__buttons_list" href="#">CONTACT</a></li>
+          </ul>
+          {{ end }}
+        </div>
+        {{ end }}
+      </footer>
+      {{ end }}
+
+</body>
+</html>

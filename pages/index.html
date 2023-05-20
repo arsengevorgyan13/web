@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" cntent="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap" rel="stylesheet">
+  <title>Main page</title>
+</head>
+
+<body>
+  {{ range .Header }}
+  <header class="header">
+    <img class="header__image" src ="{{ .Image }}" alt="dust">
+    <div class="header__top">
+      <img class="header__top_logo" src="{{ .Escape }}" alt="Escape.">
+      {{ range .HeaderNavButtons }}
+      <ul class="header__nav-buttons">
+        <li><a class="header__nav-buttons_list" href="index.html">{{ .Home }}</a></li>
+        <li><a class="header__nav-buttons_list" href="#">{{ .Categories }}</a></li>
+        <li><a class="header__nav-buttons_list" href="#">{{ .About }}</a></li>
+        <li><a class="header__nav-buttons_list" href="#">{{ .Contact }}</a></li>
+      </ul>
+      {{ end }}
+    </div>
+  </header>
+  {{ end }}
+
+  {{ range .TopBlock}}
+  <div class="top-block">
+    <h1 class="top-block__title">{{ .Title }}</h1> 
+    <p class="top-block__text">{{ .Text }}</p> 
+    <button class="top-block__button">{{ .Button }}</button> 
+  </div>
+  {{ end }}
+
+  {{ range .PageButtons }}
+  <div class="page-buttons">
+    {{ range .PageButtonsList }}
+    <ul class="page-buttons__list">
+      <li><a class="page-buttons__list_link" href="#">{{ .Nature }}</a></li>
+      <li><a class="page-buttons__list_link" href="#">{{ .Photography }}</a></li>
+      <li><a class="page-buttons__list_link" href="#">{{ .Relaxation }}</a></li>
+      <li><a class="page-buttons__list_link" href="#">{{ .Vacation }}</a></li>
+      <li><a class="page-buttons__list_link" href="#">{{ .Travel }}</a></li>
+      <li><a class="page-buttons__list_link" href="#">{{ .Adventure }}</a></li>
+    </ul>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  <article class="posts">
+    <div class="featured-posts">
+      <h2 class="featured-posts__title posts__title">{{ .FeaturedPostsTitle }}</h2>
+      <div class="featured-posts__items">
+        {{ range .FeaturedPosts }}
+        <div class="featured-posts__item">
+          <img class="featured-posts__item_first-image" src="{{ .Image }}">
+          <a class="featured-posts__item_title">{{ .Title }}</a>
+          <p class="featured-posts__item_description">{{ .Description }}</p>
+          <img class="featured-posts__item_image" src="{{ .AuthorImage }}" alt="matvogels">
+          <p class="featured-posts__item_name">{{ .AuthorName }}</p>
+          <p class="featured-posts__item_date">{{ .Date }}</p>
+        </div>
+        {{ end }}
+      </div> 
+    </div> 
+  </article>  
+  
+  <article class="recent-pages"> 
+    <h2 class="recent-pages__title">{{ .RecentPagesTitle }}</h2>
+    <div class="recent-pages__items">
+      {{ range .RecentPages }}
+      <div class="recent-pages__item">
+        <img src="{{ .Image }}" alt="balloons">
+        <a class="recent-pages__item_headline">{{ .Title }}</a>
+        <p class="recent-pages__item_phrase">{{ .Description }}</p>
+        <div class="recent-pages__item_info">
+          <img class="recent-pages__item_image" src="{{ .AuthorImage }}" alt="williamwong">
+          <p class="recent-pages__item_name">{{ .AuthorName }}</p>
+          <p class="recent-pages__item_date">{{ .Date }}</p>
+        </div>  
+      </div>
+      {{ end }}
+    </div>
+  </article>
+
+  {{ range .Footer }}
+  <footer class="footer">
+    <img class="footer__image" src="{{ .Background }}" alt="footerimage">
+    {{ range .FooterContacts }}
+    <div class="footer__contacts">
+      <p class="footer__contact_title">{{ .Title }}</p>
+      <div class="footer__contact">
+        <input class="footer__contact_email" placeholder="Enter your email address">
+        <button class="footer__contact_button">{{ .Button }}</button>
+      </div>
+    </div>
+    {{ end }}
+    {{ range .FooterBottom }}
+    <div class="footer__bottom">
+      <img class="footer__logo" src="{{ .Escape }}" alt="Escape.">
+      {{ range .FooterButtons }}
+      <ul class="footer__buttons">
+        <li><a class="footer__buttons_list" href="#">{{ .Home }}</a></li>
+        <li><a class="footer__buttons_list" href="#">{{ .Categories }}</a></li>
+        <li><a class="footer__buttons_list" href="#">{{ .About }}</a>
+        <li><a class="footer__buttons_list" href="#">{{ .Contact }}</a></li>
+      </ul>
+      {{ end }}
+    </div>
+    {{ end }} 
+  </footer>
+  {{ end }}
+
+</body>
+
+</html>
