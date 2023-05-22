@@ -62,7 +62,7 @@
         {{ range .FeaturedPosts }}
         <div class="featured-posts__item">
           <img class="featured-posts__item_first-image" src="{{ .Image }}">
-          <a class="featured-posts__item_title">{{ .Title }}</a>
+          <a class="featured-posts__item_title" href="{{ .postID }}">{{ .Title }}</a>
           <p class="featured-posts__item_description">{{ .Description }}</p>
           <img class="featured-posts__item_image" src="{{ .AuthorImage }}" alt="matvogels">
           <p class="featured-posts__item_name">{{ .AuthorName }}</p>
@@ -79,7 +79,7 @@
       {{ range .RecentPages }}
       <div class="recent-pages__item">
         <img src="{{ .Image }}" alt="balloons">
-        <a class="recent-pages__item_headline">{{ .Title }}</a>
+        <a class="recent-pages__item_headline" href="{{ .postID }}">{{ .Title }}</a>
         <p class="recent-pages__item_phrase">{{ .Description }}</p>
         <div class="recent-pages__item_info">
           <img class="recent-pages__item_image" src="{{ .AuthorImage }}" alt="williamwong">
