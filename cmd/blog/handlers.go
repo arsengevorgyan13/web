@@ -106,23 +106,25 @@ type pageButtonsListData struct {
 }
 
 type featuredPostsData struct {
-	postID      string `db:"post_id"`
+	PostID      string `db:"post_id"`
 	Image       string `db:"image_url"`
 	Title       string `db:"title"`
 	Description string `db:"subtitle"`
 	AuthorImage string `db:"author_img"`
 	AuthorName  string `db:"author_name"`
 	Date        string `db:"publish_date"`
+	PostURL     string
 }
 
 type recentPagesData struct {
-	postID      string `db:"post_id"`
+	PostID      string `db:"post_id"`
 	Image       string `db:"image_url"`
 	Title       string `db:"title"`
 	Description string `db:"subtitle"`
 	AuthorImage string `db:"author_img"`
 	AuthorName  string `db:"author_name"`
 	Date        string `db:"publish_date"`
+	PostURL     string
 }
 
 type footerData struct {
@@ -514,6 +516,10 @@ func featuredPosts(db *sqlx.DB) ([]featuredPostsData, error) {
 		return nil, err
 	}
 
+	for _, post := range featuredposts {
+		post.PostURL = "/post/" + post.PostID
+	}
+
 	return featuredposts, nil
 }
 
@@ -538,6 +544,10 @@ func recentPages(db *sqlx.DB) ([]recentPagesData, error) {
 	err := db.Select(&recentpages, query) // Делаем запрос в базу данных
 	if err != nil {                       // Проверяем, что запрос в базу данных не завершился с ошибкой
 		return nil, err
+	}
+
+	for _, post := range recentpages {
+		post.PostURL = "/post/" + post.PostID
 	}
 
 	return recentpages, nil
